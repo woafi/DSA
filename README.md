@@ -4,9 +4,8 @@ Welcome to the **Data Structures and Algorithms** repository! This repository co
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Data Structures](#data-structures)
-    - [Array](#array)
+1. [Data Structures](#data-structures)
+    - [Dynamic Array](#array)
     - [Linked List](#linked-list)
     - [Stack](#stack)
     - [Queue](#queue)
@@ -14,7 +13,7 @@ Welcome to the **Data Structures and Algorithms** repository! This repository co
     - [Graph](#graph)
     - [Hash Table](#hash-table)
     - [Heap](#heap)
-3. [Algorithms](#algorithms)
+2. [Algorithms](#algorithms)
     - [Sorting Algorithms](#sorting-algorithms)
     - [Searching Algorithms](#searching-algorithms)
     - [Graph Algorithms](#graph-algorithms)

@@ -140,7 +140,7 @@ public class DynamicArray {
 		da.add(8);
 		da.add(9);
 
-		// print all array elements after add 9 elements
+		// print all array elements
 		System.out.println("Elements of array:");
 		for (int i = 0; i < da.size; i++) {
 			System.out.print(da.array[i] + " ");
