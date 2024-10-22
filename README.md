@@ -4,8 +4,8 @@ Welcome to the **Data Structures and Algorithms** repository! This repository co
 
 ## Table of Contents
 
-1. [Data Structures](#data-structures)
-    - [Dynamic Array](#array)
+1. [Data Structures](./Data-Structures)
+    - [Dynamic Array](./Data-Structures/Dynamic-Array)
     - [Linked List](#linked-list)
     - [Stack](#stack)
     - [Queue](#queue)
