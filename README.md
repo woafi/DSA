@@ -4,9 +4,9 @@ Welcome to the **Data Structures and Algorithms** repository! This repository co
 
 ## Table of Contents
 
-1. [Data Structures](./Data-Structures)
-    - [Dynamic Array](./Data-Structures/Dynamic-Array)
-    - [Linked List](#linked-list)
+1. [Data Structures](https://github.com/woafi/DSA/tree/master/Data%20Structures)
+    - [Dynamic Array](https://github.com/woafi/DSA/tree/master/Data%20Structures/01.Dynamic%20Array)
+    - [Linked List](https://github.com/woafi/DSA/tree/master/Data%20Structures/02.LinkedList)
     - [Stack](#stack)
     - [Queue](#queue)
     - [Tree](#tree)
