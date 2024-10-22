@@ -40,18 +40,18 @@ public class LinkedList {
         Node newNode = new Node(data);
         if (head == null || index == 0) {
             newNode.next = head;
-            head = newNode;
+            head = tail = newNode;
             return;
         }
-        Node current = head;
+        Node currNode = head;
         for (int i = 1; i < size - 1; i++) {
             if (i == index) {
-                Node nextNode = current.next;
-                current.next = newNode;
+                Node nextNode = currNode.next;
+                currNode.next = newNode;
                 newNode.next = nextNode;
                 break;
             }
-            current = current.next;
+            currNode = currNode.next;
         }
     }
 
