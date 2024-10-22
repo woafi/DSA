@@ -6,8 +6,8 @@ public class LinkedList {
 
     // constructor initialize value to variable
     LinkedList() {
-            this.size = 0;
-        }// constructor of main class
+        this.size = 0;
+    }// constructor of main class
 
     /* Linked list Node */
     class Node {
@@ -32,6 +32,17 @@ public class LinkedList {
         head = newNode;
     }
 
+    // add last
+    public void addLast(String data) {
+        Node newNode = new Node(data); // create new node
+        if (head == null) {
+            head = tail = newNode;
+            return;
+        }
+        tail.next = newNode;
+        tail = newNode;
+    }
+
     // Add At Position
     public void AddAtPosition(int index, String data) {
         if (index < 0 || index > size) {
@@ -53,17 +64,6 @@ public class LinkedList {
             }
             currNode = currNode.next;
         }
-    }
-
-    // add last
-    public void addLast(String data) {
-        Node newNode = new Node(data); // create new node
-        if (head == null) {
-            head = tail = newNode;
-            return;
-        }
-        tail.next = newNode;
-        tail = newNode;
     }
 
     // delete First
@@ -99,6 +99,28 @@ public class LinkedList {
         size--;
     }
 
+    // Remove an Index Key
+    public void remove(int index) {
+        if (head == null || head.next == null) {
+            deleteFirst();
+            return;
+        }
+        Node currNode = head;
+        if (head.next == null || index == 0) {
+            head = tail = null;
+            size--;
+            return;
+        }
+        for (int i = 1; i < size - 1; i++) {
+            if (i == index) {
+                currNode.next = currNode.next.next;
+                break;
+            }
+            currNode = currNode.next;
+        }
+        size--;
+    }
+
     // Reverse Iterate
     public void reverseIterate() {
         if (head == null || head.next == null) {
@@ -128,7 +150,35 @@ public class LinkedList {
         return newHead;
     }
 
-    // print 
+    // search (Iterate)
+    public boolean searchIterate(String key) {
+        if (head == null) {
+            return false;
+        }
+        Node currNode = head;
+        boolean result = false;
+        while (currNode != null) {
+            if (currNode.data == key) {
+                result = true;
+            }
+            currNode = currNode.next;
+        }
+        return result;
+    }
+
+    // search (Recursive)
+    public boolean searchRecursive(Node head, String key) {
+        if (head == null) {
+            return false;
+        }
+        if (head.data == key) {
+            return true;
+        }
+        return searchRecursive(head.next, key);
+
+    }
+
+    // Print
     public void printList() {
         if (head == null) {
             System.out.println("Empty");
@@ -155,16 +205,21 @@ public class LinkedList {
         ll.addLast("E");
         ll.addLast("F");
         ll.addLast("G");
-        ll.AddAtPosition(2, "C"); // add in Middle
+        // ll.AddAtPosition(2, "E"); // add in Middle
 
+        // deleting an item from Linked List
         // ll.deleteFirst(); // delete First Node
         // ll.deleteLast(); // delete Last Node
         // ll.deleteLast();
         // ll.deleteLast();
+        // ll.remove(3);
 
-        //Reverse Linked List
+        // Reverse Linked List
         // ll.reverseIterate();
         // ll.head = ll.reverseRecursive(ll.head);
+        // Search an item
+        // System.out.println(ll.searchIterate("D"));
+        // System.out.println(ll.searchRecursive(ll.head, "C"));
 
         ll.printList();
         System.out.println(ll.getSize());
