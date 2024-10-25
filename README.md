@@ -7,7 +7,7 @@ Welcome to the **Data Structures and Algorithms** repository! This repository co
 1. [Data Structures](./Data%20Structures)
     - [Dynamic Array](./Data%20Structures/01.Dynamic%20Array)
     - [Linked List](./Data%20Structures/02.LinkedList)
-    - [Stack](./Data%20Structures/02.Stack)
+    - [Stack](./Data%20Structures/03.Stack)
     - [Queue](#queue)
     - [Tree](#tree)
     - [Graph](#graph)
