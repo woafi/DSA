@@ -122,8 +122,8 @@ public class LinkedList {
     }
 
     // Reverse Iterate
-    public void reverseIterate() {
-        if (head == null || head.next == null) {
+    public void reverseIterate() { // Time complexity - O(n)
+        if (head == null || head.next == null) { // Space complexity - O(1)
             return;
         }
         Node prevNode = head;
@@ -178,6 +178,39 @@ public class LinkedList {
 
     }
 
+    // Swap Node in pairs
+    public void swapInPairs() {
+        if (head == null || head.next == null) {
+            // If the list has 0 or 1 node, no swap is possible
+            return;
+        }
+    
+        Node prev = null;
+        Node current = head;
+    
+        // Update head to the second node, which will become the new head after swapping
+        head = head.next;
+    
+        while (current != null && current.next != null) {
+            Node nextPair = current.next.next; // Store the node after the next one
+            Node second = current.next;
+    
+            // Swap the current pair
+            second.next = current;
+            current.next = nextPair;
+    
+            // Link previous pair's last node to the current pair's new first node
+            if (prev != null) {
+                prev.next = second;
+            }
+    
+            // Move prev and current pointers forward to the next pair
+            prev = current;
+            current = nextPair;
+        }
+    }
+    
+
     // Print
     public void printList() {
         if (head == null) {
@@ -203,8 +236,8 @@ public class LinkedList {
         ll.addFirst("A");
         ll.addLast("D"); // add last node
         ll.addLast("E");
-        ll.addLast("F");
-        ll.addLast("G");
+        // ll.addLast("F");
+        // ll.addLast("G");
         // ll.AddAtPosition(2, "E"); // add in Middle
 
         // deleting an item from Linked List
@@ -220,7 +253,7 @@ public class LinkedList {
         // Search an item
         // System.out.println(ll.searchIterate("D"));
         // System.out.println(ll.searchRecursive(ll.head, "C"));
-
+        ll.swapInPairs();
         ll.printList();
         System.out.println(ll.getSize());
     }
