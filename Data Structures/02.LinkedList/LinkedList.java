@@ -111,6 +111,7 @@ public class LinkedList {
             size--;
             return;
         }
+
         for (int i = 1; i < size - 1; i++) {
             if (i == index) {
                 currNode.next = currNode.next.next;
@@ -120,6 +121,28 @@ public class LinkedList {
         }
         size--;
     }
+
+    //Find & Remove Nth node from End
+    public void deleteNthfromEnd(int nth){
+        if (head == null || head.next == null) {
+            deleteFirst();
+            return;
+        }
+        if (nth == size){
+            head = head.next;
+            return;
+        }
+        Node prevNode = head;
+        int find =  size - nth;
+        for (int i = 1;  i < find; i++) {
+            prevNode = prevNode.next;
+        }
+
+        prevNode.next =  prevNode.next.next;
+        size--;
+        return;
+    }
+
 
     // Reverse Iterate
     public void reverseIterate() { // Time complexity - O(n)
@@ -238,7 +261,7 @@ public class LinkedList {
         ll.addLast("E");
         // ll.addLast("F");
         // ll.addLast("G");
-        // ll.AddAtPosition(2, "E"); // add in Middle
+        ll.AddAtPosition(2, "C"); // add in Middle
 
         // deleting an item from Linked List
         // ll.deleteFirst(); // delete First Node
@@ -246,14 +269,15 @@ public class LinkedList {
         // ll.deleteLast();
         // ll.deleteLast();
         // ll.remove(3);
-
+        ll.deleteNthfromEnd(3);
         // Reverse Linked List
         // ll.reverseIterate();
         // ll.head = ll.reverseRecursive(ll.head);
         // Search an item
         // System.out.println(ll.searchIterate("D"));
         // System.out.println(ll.searchRecursive(ll.head, "C"));
-        ll.swapInPairs();
+        // ll.swapInPairs();
+
         ll.printList();
         System.out.println(ll.getSize());
     }
