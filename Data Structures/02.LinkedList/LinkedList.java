@@ -47,6 +47,7 @@ public class LinkedList {
     public void AddAtPosition(int index, String data) {
         if (index < 0 || index > size) {
             System.out.println("Invalid Index");
+            return;
         }
         Node newNode = new Node(data);
         if (head == null || index == 0) {
@@ -55,14 +56,17 @@ public class LinkedList {
             return;
         }
         Node currNode = head;
-        for (int i = 1; i < size - 1; i++) {
-            if (i == index) {
-                Node nextNode = currNode.next;
-                currNode.next = newNode;
-                newNode.next = nextNode;
-                break;
-            }
+        for (int i = 1; i <= index - 1; i++) {
             currNode = currNode.next;
+        }
+    
+        // Insert the new node
+        newNode.next = currNode.next;
+        currNode.next = newNode;
+    
+        // Update tail if the new node is added at the end
+        if (index == size) {
+            tail = newNode;
         }
     }
 
@@ -94,8 +98,7 @@ public class LinkedList {
             secondlast = secondlast.next;
         }
         secondlast.next = null;
-        tail = secondlast.next;
-
+        tail = secondlast;
         size--;
     }
 
@@ -269,7 +272,7 @@ public class LinkedList {
         // ll.deleteLast();
         // ll.deleteLast();
         // ll.remove(3);
-        ll.deleteNthfromEnd(3);
+        // ll.deleteNthfromEnd(3);
         // Reverse Linked List
         // ll.reverseIterate();
         // ll.head = ll.reverseRecursive(ll.head);
