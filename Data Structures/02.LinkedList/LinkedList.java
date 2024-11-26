@@ -59,11 +59,11 @@ public class LinkedList {
         for (int i = 1; i <= index - 1; i++) {
             currNode = currNode.next;
         }
-    
+
         // Insert the new node
         newNode.next = currNode.next;
         currNode.next = newNode;
-    
+
         // Update tail if the new node is added at the end
         if (index == size) {
             tail = newNode;
@@ -104,48 +104,64 @@ public class LinkedList {
 
     // Remove an Index Key
     public void remove(int index) {
-        if (head == null || head.next == null) {
-            deleteFirst();
+        if (index < 0 || index > size) {
+            System.out.println("Invalid Index");
             return;
         }
-        Node currNode = head;
+        if (head == null) {
+            System.out.println("Empty");
+            return;
+        }
         if (head.next == null || index == 0) {
             head = tail = null;
             size--;
             return;
         }
-
-        for (int i = 1; i < size - 1; i++) {
-            if (i == index) {
-                currNode.next = currNode.next.next;
-                break;
-            }
-            currNode = currNode.next;
-        }
-        size--;
-    }
-
-    //Find & Remove Nth node from End
-    public void deleteNthfromEnd(int nth){
-        if (head == null || head.next == null) {
-            deleteFirst();
-            return;
-        }
-        if (nth == size){
-            head = head.next;
-            return;
-        }
+        // Traverse to the node before the one to remove (index - 1)
         Node prevNode = head;
-        int find =  size - nth;
-        for (int i = 1;  i < find; i++) {
+        for (int i = 1; i < index; i++) { // Fix loop condition
             prevNode = prevNode.next;
         }
 
-        prevNode.next =  prevNode.next.next;
-        size--;
-        return;
+        // Remove the target node
+        prevNode.next = prevNode.next.next;
+
+        // Update tail if the last node was removed
+        if (index == size - 1) {
+            tail = prevNode;
+        }
+
+        size--; // Decrement size
     }
 
+    // Find & Remove Nth node from End
+    public void deleteNthfromEnd(int nth) {
+        if (head == null) {
+            System.out.println("Empty");
+            return;
+        }
+
+        if (nth == size) {
+            head = tail = head.next;
+            size--;
+            return;
+        }
+        Node prevNode = head;
+        int find = size - nth;
+        // Traverse to the node before the one to remove find
+        for (int i = 1; i < find; i++) {
+            prevNode = prevNode.next;
+        }
+        // Remove the target node
+        prevNode.next = prevNode.next.next;
+        size--;
+
+        // Update tail if the last node was removed
+        if (nth == size) {
+            tail = prevNode;
+        }
+        return;
+    }
 
     // Reverse Iterate
     public void reverseIterate() { // Time complexity - O(n)
@@ -210,32 +226,31 @@ public class LinkedList {
             // If the list has 0 or 1 node, no swap is possible
             return;
         }
-    
+
         Node prev = null;
         Node current = head;
-    
+
         // Update head to the second node, which will become the new head after swapping
         head = head.next;
-    
+
         while (current != null && current.next != null) {
             Node nextPair = current.next.next; // Store the node after the next one
             Node second = current.next;
-    
+
             // Swap the current pair
             second.next = current;
             current.next = nextPair;
-    
+
             // Link previous pair's last node to the current pair's new first node
             if (prev != null) {
                 prev.next = second;
             }
-    
+
             // Move prev and current pointers forward to the next pair
             prev = current;
             current = nextPair;
         }
     }
-    
 
     // Print
     public void printList() {
@@ -264,14 +279,14 @@ public class LinkedList {
         ll.addLast("E");
         // ll.addLast("F");
         // ll.addLast("G");
-        ll.AddAtPosition(2, "C"); // add in Middle
+        ll.AddAtPosition(4, "C"); // add in Middle
 
         // deleting an item from Linked List
         // ll.deleteFirst(); // delete First Node
         // ll.deleteLast(); // delete Last Node
         // ll.deleteLast();
         // ll.deleteLast();
-        // ll.remove(3);
+        ll.remove(3);
         // ll.deleteNthfromEnd(3);
         // Reverse Linked List
         // ll.reverseIterate();
