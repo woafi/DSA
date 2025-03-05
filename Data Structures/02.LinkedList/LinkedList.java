@@ -16,12 +16,16 @@ public class LinkedList {
 
         Node(String data) {
             this.data = data;
+
+            // this.next = null: Sets the next reference to null, indicating that this node
+            // does not yet point to any other node (it is the last node in the list by
+            // default)
             this.next = null;
             size++;
         }
     }
 
-    // add First
+    // Add First
     public void addFirst(String data) {
         Node newNode = new Node(data); // create new node
         if (head == null) {
@@ -32,7 +36,7 @@ public class LinkedList {
         head = newNode;
     }
 
-    // add last
+    // Add last
     public void addLast(String data) {
         Node newNode = new Node(data); // create new node
         if (head == null) {
@@ -50,9 +54,14 @@ public class LinkedList {
             return;
         }
         Node newNode = new Node(data);
-        if (head == null || index == 0) {
+        if (head == null) {
             newNode.next = head;
             head = tail = newNode;
+            return;
+        }
+        if (index == 0) {
+            newNode.next = head;
+            head = newNode;
             return;
         }
         Node currNode = head;
@@ -70,33 +79,49 @@ public class LinkedList {
         }
     }
 
-    // delete First
+    // Delete First
     public void deleteFirst() {
         if (head == null) {
             System.out.println("Empty");
             return;
         }
-        head = head.next;
-        size--;
-    }
 
-    // delete Last
-    public void deleteLast() {
-        if (head == null) {
-            System.out.println("Empty");
-            return;
-        }
+        // If there's only one node
         if (head.next == null) {
             head = tail = null;
             size--;
             return;
         }
+
+        head = head.next;
+        size--;
+    }
+
+    // Delete Last
+    public void deleteLast() {
+        if (head == null) {
+            System.out.println("Empty");
+            return;
+        }
+        // If there's only one node
+        if (head.next == null) {
+            head = tail = null;
+            size--;
+            return;
+        }
+
+        // Traverse to the second-to-last node
+        // Node secondlast = head;
+        // Node lastNode = head.next;
+        // while (lastNode.next != null) {
+        // lastNode = lastNode.next;
+        // secondlast = secondlast.next;
+        // }
         Node secondlast = head;
-        Node lastNode = head.next;
-        while (lastNode.next != null) {
-            lastNode = lastNode.next;
+        while (secondlast.next.next != null) {
             secondlast = secondlast.next;
         }
+        // update the tail
         secondlast.next = null;
         tail = secondlast;
         size--;
@@ -112,14 +137,20 @@ public class LinkedList {
             System.out.println("Empty");
             return;
         }
-        if (head.next == null || index == 0) {
+        if (head.next == null) {
             head = tail = null;
             size--;
             return;
         }
+        if (index == 0) {
+            head = head.next;
+            size--;
+            return;
+
+        }
         // Traverse to the node before the one to remove (index - 1)
         Node prevNode = head;
-        for (int i = 1; i < index; i++) { // Fix loop condition
+        for (int i = 1; i < index; i++) {
             prevNode = prevNode.next;
         }
 
@@ -277,19 +308,24 @@ public class LinkedList {
         ll.addFirst("A");
         ll.addLast("D"); // add last node
         ll.addLast("E");
+        ll.addLast("F");
         // ll.addLast("F");
         // ll.addLast("G");
-        ll.AddAtPosition(4, "C"); // add in Middle
+        ll.AddAtPosition(2, "C"); // add in Middle
 
         // deleting an item from Linked List
-        // ll.deleteFirst(); // delete First Node
-        // ll.deleteLast(); // delete Last Node
+        // delete First Node
+        // ll.deleteFirst();
+
+        // delete Last Node
         // ll.deleteLast();
         // ll.deleteLast();
-        ll.remove(3);
+        // ll.deleteLast();
+
+        // ll.remove(0);
         // ll.deleteNthfromEnd(3);
         // Reverse Linked List
-        // ll.reverseIterate();
+        ll.reverseIterate();
         // ll.head = ll.reverseRecursive(ll.head);
         // Search an item
         // System.out.println(ll.searchIterate("D"));
