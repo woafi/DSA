@@ -22,7 +22,7 @@ public class BinarySearchIterative {
 
         while (left <= right) {
             // Find the middle index
-            int mid = (left + right) / 2;
+            int mid = left + (right - left) / 2;
 
             // Check if target is at mid
             if (arr[mid] == target) {
